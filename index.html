@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipher Scope</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #search-container {
+            margin-top: 50px;
+        }
+        #search-box {
+            padding: 10px;
+            width: 300px;
+        }
+        #search-button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #iframe-container {
+            display: none;
+            width: 80%;
+            height: 500px;
+            margin: 20px auto;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="search-container">
+        <input type="text" id="search-box" placeholder="Enter Instagram ID">
+        <button id="search-button">Get Info</button>
+    </div>
+    <div id="iframe-container">
+        <iframe id="search-frame"></iframe>
+    </div>
+    <script>
+        document.getElementById("search-button").addEventListener("click", function() {
+            let query = document.getElementById("search-box").value;
+            if (query) {
+                let searchUrl = `https://www.google.com/search?q=site%3A*%20intext%3A${encodeURIComponent(query)}`;
+                document.getElementById("search-frame").src = searchUrl;
+                document.getElementById("iframe-container").style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
